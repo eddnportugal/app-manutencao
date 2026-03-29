@@ -1,0 +1,9 @@
+{
+  "query": "CREATE TABLE IF NOT EXISTS temas_personalizados (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  userId INT NOT NULL,\n  slug VARCHAR(50) NOT NULL,\n  nome VARCHAR(100) NOT NULL,\n  corPrimaria VARCHAR(20) NOT NULL,\n  corSecundaria VARCHAR(20),\n  corFundo VARCHAR(20),\n  corTexto VARCHAR(20),\n  corAcento VARCHAR(20),\n  modoEscuro BOOLEAN DEFAULT false,\n  ativo BOOLEAN DEFAULT true,\n  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,\n  updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL,\n  FOREIGN KEY (userId) REFERENCES users(id)\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BJigjDSHDXY3fo.aa7eee47dc1b --database eMtgZyuGJNKHLXS6iHiZyG --execute CREATE TABLE IF NOT EXISTS temas_personalizados (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  userId INT NOT NULL,\n  slug VARCHAR(50) NOT NULL,\n  nome VARCHAR(100) NOT NULL,\n  corPrimaria VARCHAR(20) NOT NULL,\n  corSecundaria VARCHAR(20),\n  corFundo VARCHAR(20),\n  corTexto VARCHAR(20),\n  corAcento VARCHAR(20),\n  modoEscuro BOOLEAN DEFAULT false,\n  ativo BOOLEAN DEFAULT true,\n  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,\n  updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL,\n  FOREIGN KEY (userId) REFERENCES users(id)\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 267
+}

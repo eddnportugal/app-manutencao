@@ -1,0 +1,9 @@
+{
+  "query": "CREATE TABLE IF NOT EXISTS gestor_tokens_recuperacao (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  token_hash VARCHAR(255) NOT NULL UNIQUE,\n  gestor_id VARCHAR(255) NOT NULL,\n  expira_em BIGINT NOT NULL,\n  usado BOOLEAN DEFAULT FALSE,\n  criado_em BIGINT,\n  INDEX idx_token_hash (token_hash),\n  INDEX idx_gestor_id (gestor_id)\n)",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BJigjDSHDXY3fo.aa7eee47dc1b --database eMtgZyuGJNKHLXS6iHiZyG --execute CREATE TABLE IF NOT EXISTS gestor_tokens_recuperacao (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  token_hash VARCHAR(255) NOT NULL UNIQUE,\n  gestor_id VARCHAR(255) NOT NULL,\n  expira_em BIGINT NOT NULL,\n  usado BOOLEAN DEFAULT FALSE,\n  criado_em BIGINT,\n  INDEX idx_token_hash (token_hash),\n  INDEX idx_gestor_id (gestor_id)\n)",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 281
+}

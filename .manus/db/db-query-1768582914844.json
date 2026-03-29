@@ -1,0 +1,9 @@
+{
+  "query": "CREATE TABLE IF NOT EXISTS `os_anexos` (\n  `id` int AUTO_INCREMENT NOT NULL,\n  `ordemServicoId` int NOT NULL,\n  `nome` varchar(255) NOT NULL,\n  `nomeOriginal` varchar(255) NOT NULL,\n  `url` text NOT NULL,\n  `tipo` enum('pdf','imagem','documento','outro') NOT NULL DEFAULT 'outro',\n  `mimeType` varchar(100),\n  `tamanho` int,\n  `descricao` text,\n  `uploadPor` int,\n  `uploadPorNome` varchar(255),\n  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  CONSTRAINT `os_anexos_id` PRIMARY KEY(`id`),\n  CONSTRAINT `os_anexos_ordemServicoId_fk` FOREIGN KEY (`ordemServicoId`) REFERENCES `ordens_servico`(`id`) ON DELETE CASCADE,\n  CONSTRAINT `os_anexos_uploadPor_fk` FOREIGN KEY (`uploadPor`) REFERENCES `users`(`id`) ON DELETE SET NULL\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BJigjDSHDXY3fo.aa7eee47dc1b --database eMtgZyuGJNKHLXS6iHiZyG --execute CREATE TABLE IF NOT EXISTS `os_anexos` (\n  `id` int AUTO_INCREMENT NOT NULL,\n  `ordemServicoId` int NOT NULL,\n  `nome` varchar(255) NOT NULL,\n  `nomeOriginal` varchar(255) NOT NULL,\n  `url` text NOT NULL,\n  `tipo` enum('pdf','imagem','documento','outro') NOT NULL DEFAULT 'outro',\n  `mimeType` varchar(100),\n  `tamanho` int,\n  `descricao` text,\n  `uploadPor` int,\n  `uploadPorNome` varchar(255),\n  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  CONSTRAINT `os_anexos_id` PRIMARY KEY(`id`),\n  CONSTRAINT `os_anexos_ordemServicoId_fk` FOREIGN KEY (`ordemServicoId`) REFERENCES `ordens_servico`(`id`) ON DELETE CASCADE,\n  CONSTRAINT `os_anexos_uploadPor_fk` FOREIGN KEY (`uploadPor`) REFERENCES `users`(`id`) ON DELETE SET NULL\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 370
+}

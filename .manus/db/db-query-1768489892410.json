@@ -1,0 +1,22 @@
+{
+  "query": "SELECT id, name, email, openId FROM users;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BJigjDSHDXY3fo.aa7eee47dc1b --database eMtgZyuGJNKHLXS6iHiZyG --execute SELECT id, name, email, openId FROM users;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "EDUARDO DOMINIKUS",
+      "email": "eddnpt@gmail.com",
+      "openId": "SgHBzsLvWaUsoVhDazqACi"
+    },
+    {
+      "id": "121201",
+      "name": "Eduardo Dantas",
+      "email": "eduardodominikus@hotmail.com",
+      "openId": "local_8fc62cd3720e3ba0d9f08372befa3cc2"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\temail\topenId\n1\tEDUARDO DOMINIKUS\teddnpt@gmail.com\tSgHBzsLvWaUsoVhDazqACi\n121201\tEduardo Dantas\teduardodominikus@hotmail.com\tlocal_8fc62cd3720e3ba0d9f08372befa3cc2\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}

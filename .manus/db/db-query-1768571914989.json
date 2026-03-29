@@ -1,0 +1,9 @@
+{
+  "query": "ALTER TABLE campos_rapidos_templates MODIFY COLUMN tipoCampo ENUM('titulo', 'descricao', 'local', 'observacao', 'responsavel_os', 'titulo_os') NOT NULL;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BJigjDSHDXY3fo.aa7eee47dc1b --database eMtgZyuGJNKHLXS6iHiZyG --execute ALTER TABLE campos_rapidos_templates MODIFY COLUMN tipoCampo ENUM('titulo', 'descricao', 'local', 'observacao', 'responsavel_os', 'titulo_os') NOT NULL;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 216
+}

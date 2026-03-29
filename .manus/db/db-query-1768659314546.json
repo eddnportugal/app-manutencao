@@ -1,0 +1,9 @@
+{
+  "query": "CREATE TABLE `preferencias_layout` (\n  `id` int AUTO_INCREMENT NOT NULL,\n  `userId` int NOT NULL,\n  `tema` enum('laranja','azul','verde','roxo') DEFAULT 'laranja' NOT NULL,\n  `layout` enum('classico','compacto','moderno') DEFAULT 'classico' NOT NULL,\n  `modoEscuro` boolean DEFAULT false,\n  `tamanhoFonte` enum('pequeno','medio','grande') DEFAULT 'medio',\n  `sidebarExpandida` boolean DEFAULT true,\n  `createdAt` timestamp NOT NULL DEFAULT (now()),\n  `updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,\n  CONSTRAINT `preferencias_layout_id` PRIMARY KEY(`id`),\n  CONSTRAINT `preferencias_layout_userId_unique` UNIQUE(`userId`),\n  CONSTRAINT `preferencias_layout_userId_users_id_fk` FOREIGN KEY (`userId`) REFERENCES `users`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BJigjDSHDXY3fo.aa7eee47dc1b --database eMtgZyuGJNKHLXS6iHiZyG --execute CREATE TABLE `preferencias_layout` (\n  `id` int AUTO_INCREMENT NOT NULL,\n  `userId` int NOT NULL,\n  `tema` enum('laranja','azul','verde','roxo') DEFAULT 'laranja' NOT NULL,\n  `layout` enum('classico','compacto','moderno') DEFAULT 'classico' NOT NULL,\n  `modoEscuro` boolean DEFAULT false,\n  `tamanhoFonte` enum('pequeno','medio','grande') DEFAULT 'medio',\n  `sidebarExpandida` boolean DEFAULT true,\n  `createdAt` timestamp NOT NULL DEFAULT (now()),\n  `updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,\n  CONSTRAINT `preferencias_layout_id` PRIMARY KEY(`id`),\n  CONSTRAINT `preferencias_layout_userId_unique` UNIQUE(`userId`),\n  CONSTRAINT `preferencias_layout_userId_users_id_fk` FOREIGN KEY (`userId`) REFERENCES `users`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 313
+}

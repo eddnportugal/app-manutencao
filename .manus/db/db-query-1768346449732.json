@@ -1,0 +1,9 @@
+{
+  "query": "CREATE TABLE IF NOT EXISTS app_sessoes (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  appId INT NOT NULL,\n  usuarioId INT,\n  codigoAcessoId INT,\n  token VARCHAR(255) NOT NULL UNIQUE,\n  ip VARCHAR(45),\n  userAgent TEXT,\n  expiraEm TIMESTAMP NOT NULL,\n  ativo BOOLEAN DEFAULT TRUE,\n  createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  FOREIGN KEY (appId) REFERENCES apps(id),\n  FOREIGN KEY (usuarioId) REFERENCES app_usuarios(id),\n  FOREIGN KEY (codigoAcessoId) REFERENCES app_codigos_acesso(id)\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BJigjDSHDXY3fo.aa7eee47dc1b --database eMtgZyuGJNKHLXS6iHiZyG --execute CREATE TABLE IF NOT EXISTS app_sessoes (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  appId INT NOT NULL,\n  usuarioId INT,\n  codigoAcessoId INT,\n  token VARCHAR(255) NOT NULL UNIQUE,\n  ip VARCHAR(45),\n  userAgent TEXT,\n  expiraEm TIMESTAMP NOT NULL,\n  ativo BOOLEAN DEFAULT TRUE,\n  createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  FOREIGN KEY (appId) REFERENCES apps(id),\n  FOREIGN KEY (usuarioId) REFERENCES app_usuarios(id),\n  FOREIGN KEY (codigoAcessoId) REFERENCES app_codigos_acesso(id)\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 279
+}

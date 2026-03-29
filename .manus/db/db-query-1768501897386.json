@@ -1,0 +1,9 @@
+{
+  "query": "CREATE TABLE IF NOT EXISTS `admin_logs` (\n  `id` int AUTO_INCREMENT NOT NULL,\n  `adminId` int NOT NULL,\n  `adminNome` varchar(255),\n  `adminEmail` varchar(320),\n  `acao` enum('criar','editar','excluir','ativar','desativar','promover','rebaixar') NOT NULL,\n  `entidade` enum('usuario','condominio','vistoria','manutencao','ordem_servico','funcao','configuracao') NOT NULL,\n  `entidadeId` int,\n  `entidadeNome` varchar(255),\n  `detalhes` text,\n  `ip` varchar(45),\n  `userAgent` text,\n  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  CONSTRAINT `admin_logs_id` PRIMARY KEY(`id`),\n  CONSTRAINT `admin_logs_adminId_users_id_fk` FOREIGN KEY (`adminId`) REFERENCES `users`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BJigjDSHDXY3fo.aa7eee47dc1b --database eMtgZyuGJNKHLXS6iHiZyG --execute CREATE TABLE IF NOT EXISTS `admin_logs` (\n  `id` int AUTO_INCREMENT NOT NULL,\n  `adminId` int NOT NULL,\n  `adminNome` varchar(255),\n  `adminEmail` varchar(320),\n  `acao` enum('criar','editar','excluir','ativar','desativar','promover','rebaixar') NOT NULL,\n  `entidade` enum('usuario','condominio','vistoria','manutencao','ordem_servico','funcao','configuracao') NOT NULL,\n  `entidadeId` int,\n  `entidadeNome` varchar(255),\n  `detalhes` text,\n  `ip` varchar(45),\n  `userAgent` text,\n  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  CONSTRAINT `admin_logs_id` PRIMARY KEY(`id`),\n  CONSTRAINT `admin_logs_adminId_users_id_fk` FOREIGN KEY (`adminId`) REFERENCES `users`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 370
+}

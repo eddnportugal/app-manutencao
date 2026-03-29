@@ -1,0 +1,1 @@
+ALTER TABLE `ordens_servico` MODIFY COLUMN `protocolo` varchar(10) NOT NULL;

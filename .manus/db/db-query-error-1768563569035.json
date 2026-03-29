@@ -1,0 +1,8 @@
+{
+  "query": "ALTER TABLE `ordens_servico` ADD COLUMN `responsavelPrincipalId` int, ADD COLUMN `responsavelPrincipalNome` varchar(255), ADD CONSTRAINT `ordens_servico_responsavelPrincipalId_fk` FOREIGN KEY (`responsavelPrincipalId`) REFERENCES `os_responsaveis`(`id`);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BJigjDSHDXY3fo.aa7eee47dc1b --database eMtgZyuGJNKHLXS6iHiZyG --execute ALTER TABLE `ordens_servico` ADD COLUMN `responsavelPrincipalId` int, ADD COLUMN `responsavelPrincipalNome` varchar(255), ADD CONSTRAINT `ordens_servico_responsavelPrincipalId_fk` FOREIGN KEY (`responsavelPrincipalId`) REFERENCES `os_responsaveis`(`id`);",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1072 (42000) at line 1: Key column 'responsavelPrincipalId' doesn't exist in table"
+  ]
+}

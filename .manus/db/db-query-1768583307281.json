@@ -1,0 +1,9 @@
+{
+  "query": "ALTER TABLE `os_timeline` MODIFY COLUMN `tipo` enum('criacao','status_alterado','responsavel_adicionado','responsavel_removido','material_adicionado','material_removido','orcamento_adicionado','orcamento_aprovado','orcamento_rejeitado','orcamento_removido','inicio_servico','fim_servico','comentario','foto_adicionada','localizacao_atualizada','vinculo_manutencao','anexo_adicionado','anexo_removido') NOT NULL;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BJigjDSHDXY3fo.aa7eee47dc1b --database eMtgZyuGJNKHLXS6iHiZyG --execute ALTER TABLE `os_timeline` MODIFY COLUMN `tipo` enum('criacao','status_alterado','responsavel_adicionado','responsavel_removido','material_adicionado','material_removido','orcamento_adicionado','orcamento_aprovado','orcamento_rejeitado','orcamento_removido','inicio_servico','fim_servico','comentario','foto_adicionada','localizacao_atualizada','vinculo_manutencao','anexo_adicionado','anexo_removido') NOT NULL;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 207
+}

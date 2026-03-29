@@ -1,0 +1,24 @@
+{
+  "query": "SELECT id, name, email, role, tipoConta FROM users WHERE email LIKE '%eddnpt%' OR email LIKE '%dominikus%' LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BJigjDSHDXY3fo.aa7eee47dc1b --database eMtgZyuGJNKHLXS6iHiZyG --execute SELECT id, name, email, role, tipoConta FROM users WHERE email LIKE '%eddnpt%' OR email LIKE '%dominikus%' LIMIT 5;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "EDUARDO DOMINIKUS",
+      "email": "eddnpt@gmail.com",
+      "role": "admin",
+      "tipoConta": "sindico"
+    },
+    {
+      "id": "121201",
+      "name": "Eduardo Dantas",
+      "email": "eduardodominikus@hotmail.com",
+      "role": "sindico",
+      "tipoConta": "sindico"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\temail\trole\ttipoConta\n1\tEDUARDO DOMINIKUS\teddnpt@gmail.com\tadmin\tsindico\n121201\tEduardo Dantas\teduardodominikus@hotmail.com\tsindico\tsindico\n",
+  "stderr": "",
+  "execution_time_ms": 130
+}

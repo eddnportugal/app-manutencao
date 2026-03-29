@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>App Manutenção — 4 Estilos × Light & Dark</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    background: #e8ecf0;
+    color: #1a1a2e;
+    padding: 24px;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .subtitle {
+    text-align: center;
+    color: #64748b;
+    font-size: 15px;
+    margin-bottom: 48px;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 800;
+    margin: 48px 0 8px;
+    color: #1e293b;
+  }
+  
+  .section-desc {
+    text-align: center;
+    color: #94a3b8;
+    font-size: 13px;
+    margin-bottom: 32px;
+  }
+  
+  .pair-row {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+  
+  .pair-col {
+    text-align: center;
+  }
+  
+  .theme-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+  
+  .badge-light { background: #fef3c7; color: #b45309; }
+  .badge-dark { background: #1e293b; color: #94a3b8; }
+  
+  /* ===== Phone Frame ===== */
+  .phone {
+    width: 360px;
+    min-height: 700px;
+    border-radius: 44px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.18), 0 0 0 1px rgba(0,0,0,0.06);
+    position: relative;
+  }
+  
+  .phone::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 30px;
+    background: #111;
+    border-radius: 0 0 18px 18px;
+    z-index: 10;
+  }
+  
+  .phone-head {
+    padding: 48px 24px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .phone-head h2 { font-size: 20px; font-weight: 700; }
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+    color: #fff;
+  }
+  
+  .greeting {
+    padding: 0 24px 20px;
+    font-size: 13px;
+  }
+
+  /* ===== PALETTES ===== */
+  .c-orange { background: linear-gradient(135deg, #f97316, #ea580c); }
+  .c-blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+  .c-green { background: linear-gradient(135deg, #10b981, #059669); }
+  .c-purple { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+  .c-red { background: linear-gradient(135deg, #ef4444, #dc2626); }
+  .c-teal { background: linear-gradient(135deg, #14b8a6, #0d9488); }
+  .c-pink { background: linear-gradient(135deg, #ec4899, #db2777); }
+  .c-amber { background: linear-gradient(135deg, #f59e0b, #d97706); }
+  .c-indigo { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+
+  /* ===== SVG Icons ===== */
+  .ic svg { width: 24px; height: 24px; stroke-width: 1.8; fill: none; }
+  .ic-sm svg { width: 22px; height: 22px; stroke-width: 1.8; fill: none; }
+  .ic-lg svg { width: 26px; height: 26px; stroke-width: 1.8; fill: none; }
+
+  /* ============================================================
+     ESTILO 1: GRID CLEAN
+     ============================================================ */
+  .g1 { padding: 0 18px 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  
+  .g1 .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 18px 6px;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .g1 .item:hover { transform: translateY(-2px); }
+  
+  .g1 .ico {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .g1 .lbl {
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  /* Grid Clean Light */
+  .g1-light .phone { background: #ffffff; }
+  .g1-light .phone-head h2 { color: #1e293b; }
+  .g1-light .greeting { color: #94a3b8; }
+  .g1-light .avatar { background: linear-gradient(135deg, #f97316, #ea580c); }
+  .g1-light .item { background: #f8fafc; border: 1px solid #f1f5f9; }
+  .g1-light .item:hover { background: #fff; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .g1-light .lbl { color: #475569; }
+  .g1-light .ico.o { background: #fff7ed; color: #ea580c; }
+  .g1-light .ico.b { background: #eff6ff; color: #2563eb; }
+  .g1-light .ico.g { background: #f0fdf4; color: #059669; }
+  .g1-light .ico.p { background: #faf5ff; color: #7c3aed; }
+  .g1-light .ico.r { background: #fef2f2; color: #dc2626; }
+  .g1-light .ico.t { background: #f0fdfa; color: #0d9488; }
+  .g1-light .ico.pk { background: #fdf2f8; color: #db2777; }
+  .g1-light .ico.a { background: #fffbeb; color: #d97706; }
+
+  /* Grid Clean Dark */
+  .g1-dark .phone { background: #0f172a; }
+  .g1-dark .phone-head h2 { color: #f1f5f9; }
+  .g1-dark .greeting { color: #64748b; }
+  .g1-dark .avatar { background: linear-gradient(135deg, #f97316, #ea580c); }
+  .g1-dark .item { background: #1e293b; border: 1px solid #334155; }
+  .g1-dark .item:hover { background: #263548; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+  .g1-dark .lbl { color: #cbd5e1; }
+  .g1-dark .ico.o { background: rgba(249,115,22,0.15); color: #fb923c; }
+  .g1-dark .ico.b { background: rgba(59,130,246,0.15); color: #60a5fa; }
+  .g1-dark .ico.g { background: rgba(16,185,129,0.15); color: #34d399; }
+  .g1-dark .ico.p { background: rgba(139,92,246,0.15); color: #a78bfa; }
+  .g1-dark .ico.r { background: rgba(239,68,68,0.15); color: #f87171; }
+  .g1-dark .ico.t { background: rgba(20,184,166,0.15); color: #2dd4bf; }
+  .g1-dark .ico.pk { background: rgba(236,72,153,0.15); color: #f472b6; }
+  .g1-dark .ico.a { background: rgba(245,158,11,0.15); color: #fbbf24; }
+
+  /* ============================================================
+     ESTILO 2: CARDS GRADIENTE
+     ============================================================ */
+  .g2 { padding: 0 18px 24px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  
+  .g2 .item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .g2 .item::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+  }
+  .g2 .item:hover { transform: translateY(-3px); }
+  
+  .g2 .ico {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+  
+  .g2 .lbl { font-size: 13px; font-weight: 700; color: #fff; }
+  .g2 .desc { font-size: 11px; color: rgba(255,255,255,0.65); line-height: 1.3; }
+
+  /* Cards Gradient Light */
+  .g2-light .phone { background: #f8fafc; }
+  .g2-light .phone-head h2 { color: #1e293b; }
+  .g2-light .greeting { color: #94a3b8; }
+  .g2-light .avatar { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+
+  /* Cards Gradient Dark */
+  .g2-dark .phone { background: #0a0e1a; }
+  .g2-dark .phone-head h2 { color: #f1f5f9; }
+  .g2-dark .greeting { color: #4b5563; }
+  .g2-dark .avatar { background: linear-gradient(135deg, #818cf8, #6366f1); }
+  .g2-dark .item { box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+
+  /* ============================================================
+     ESTILO 3: LISTA MODERNA
+     ============================================================ */
+  .g3 { padding: 0 18px 24px; display: flex; flex-direction: column; gap: 10px; }
+  
+  .g3 .item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .g3 .item:hover { transform: translateX(4px); }
+  
+  .g3 .ico {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+  }
+  .g3 .ico svg { color: #fff; }
+  
+  .g3 .txt { flex: 1; }
+  .g3 .lbl { font-size: 14px; font-weight: 600; }
+  .g3 .desc { font-size: 11px; margin-top: 2px; }
+  .g3 .arr { flex-shrink: 0; }
+  .g3 .arr svg { width: 18px; height: 18px; stroke-width: 2; fill: none; }
+
+  /* Lista Light */
+  .g3-light .phone { background: #fafbfc; }
+  .g3-light .phone-head h2 { color: #1e293b; }
+  .g3-light .greeting { color: #94a3b8; }
+  .g3-light .avatar { background: linear-gradient(135deg, #10b981, #059669); }
+  .g3-light .item { background: #fff; border: 1px solid #f1f5f9; }
+  .g3-light .item:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-color: transparent; }
+  .g3-light .lbl { color: #1e293b; }
+  .g3-light .desc { color: #94a3b8; }
+  .g3-light .arr { color: #cbd5e1; }
+
+  /* Lista Dark */
+  .g3-dark .phone { background: #111827; }
+  .g3-dark .phone-head h2 { color: #f1f5f9; }
+  .g3-dark .greeting { color: #6b7280; }
+  .g3-dark .avatar { background: linear-gradient(135deg, #34d399, #059669); }
+  .g3-dark .item { background: #1f2937; border: 1px solid #374151; }
+  .g3-dark .item:hover { background: #263040; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border-color: #4b5563; }
+  .g3-dark .lbl { color: #f1f5f9; }
+  .g3-dark .desc { color: #6b7280; }
+  .g3-dark .arr { color: #4b5563; }
+
+  /* ============================================================
+     ESTILO 4: BOLHAS CIRCULAR
+     ============================================================ */
+  .g4 { padding: 0 14px 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px 8px; }
+  
+  .g4 .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .g4 .item:hover { transform: scale(1.08); }
+  
+  .g4 .ico {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    position: relative;
+  }
+  .g4 .ico svg { color: #fff; }
+  
+  .g4 .lbl {
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  /* Bolhas Light */
+  .g4-light .phone { background: linear-gradient(180deg, #fef3e2 0%, #fff7ed 30%, #ffffff 100%); }
+  .g4-light .phone-head h2 { color: #1e293b; }
+  .g4-light .greeting { color: #94a3b8; }
+  .g4-light .avatar { background: linear-gradient(135deg, #f97316, #dc2626); }
+  .g4-light .ico { box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+  .g4-light .lbl { color: #475569; }
+
+  /* Bolhas Dark */
+  .g4-dark .phone { background: linear-gradient(180deg, #1a1220 0%, #0f172a 40%, #0f172a 100%); }
+  .g4-dark .phone-head h2 { color: #f1f5f9; }
+  .g4-dark .greeting { color: #64748b; }
+  .g4-dark .avatar { background: linear-gradient(135deg, #fb923c, #ef4444); }
+  .g4-dark .ico { box-shadow: 0 6px 24px rgba(0,0,0,0.35); }
+  .g4-dark .lbl { color: #cbd5e1; }
+
+  /* ===== SVG ICON TEMPLATES ===== */
+  .svg-wrench path { d: path("M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"); }
+</style>
+</head>
+<body>
+
+<h1>App Manutenção — Estilos & Temas</h1>
+<p class="subtitle">4 estilos de ícones × Tema Claro & Tema Escuro</p>
+
+<!-- ====== ESTILO 1: GRID CLEAN ====== -->
+<div class="section-title">Estilo 1 — Grid Clean</div>
+<div class="section-desc">Minimalista, ícones com fundos suaves, espaçamento generoso</div>
+<div class="pair-row">
+  <div class="pair-col g1-light">
+    <span class="theme-badge badge-light">☀️ Tema Claro</span>
+    <div class="phone">
+      <div class="phone-head"><h2>Olá, João 👋</h2><div class="avatar">J</div></div>
+      <div class="greeting">O que você precisa hoje?</div>
+      <div class="g1">
+        <div class="item"><div class="ico o ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><span class="lbl">Manutenção</span></div>
+        <div class="item"><div class="ico b ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><span class="lbl">QR Code</span></div>
+        <div class="item"><div class="ico g ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><span class="lbl">Documentos</span></div>
+        <div class="item"><div class="ico p ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><span class="lbl">Funcionários</span></div>
+        <div class="item"><div class="ico r ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><span class="lbl">Localização</span></div>
+        <div class="item"><div class="ico t ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><span class="lbl">Vistoria</span></div>
+        <div class="item"><div class="ico pk ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><span class="lbl">Timeline</span></div>
+        <div class="item"><div class="ico a ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><span class="lbl">Minha Conta</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="pair-col g1-dark">
+    <span class="theme-badge badge-dark">🌙 Tema Escuro</span>
+    <div class="phone">
+      <div class="phone-head"><h2>Olá, João 👋</h2><div class="avatar">J</div></div>
+      <div class="greeting">O que você precisa hoje?</div>
+      <div class="g1">
+        <div class="item"><div class="ico o ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><span class="lbl">Manutenção</span></div>
+        <div class="item"><div class="ico b ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><span class="lbl">QR Code</span></div>
+        <div class="item"><div class="ico g ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><span class="lbl">Documentos</span></div>
+        <div class="item"><div class="ico p ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><span class="lbl">Funcionários</span></div>
+        <div class="item"><div class="ico r ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><span class="lbl">Localização</span></div>
+        <div class="item"><div class="ico t ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><span class="lbl">Vistoria</span></div>
+        <div class="item"><div class="ico pk ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><span class="lbl">Timeline</span></div>
+        <div class="item"><div class="ico a ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><span class="lbl">Minha Conta</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== ESTILO 2: CARDS GRADIENTE ====== -->
+<div class="section-title">Estilo 2 — Cards Gradiente</div>
+<div class="section-desc">Cards vibrantes com degradê, descrição curta, visual arrojado</div>
+<div class="pair-row">
+  <div class="pair-col g2-light">
+    <span class="theme-badge badge-light">☀️ Tema Claro</span>
+    <div class="phone">
+      <div class="phone-head"><h2>Olá, João 👋</h2><div class="avatar">J</div></div>
+      <div class="greeting">O que você precisa hoje?</div>
+      <div class="g2">
+        <div class="item c-orange"><div class="ico ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><span class="lbl">Manutenção</span><span class="desc">Criar e gerenciar OS</span></div>
+        <div class="item c-blue"><div class="ico ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><span class="lbl">QR Code</span><span class="desc">Gerar códigos e links</span></div>
+        <div class="item c-green"><div class="ico ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><span class="lbl">Documentos</span><span class="desc">Recibos, contratos, OS</span></div>
+        <div class="item c-purple"><div class="ico ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><span class="lbl">Funcionários</span><span class="desc">Cadastro e gestão</span></div>
+        <div class="item c-red"><div class="ico ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><span class="lbl">Localização</span><span class="desc">Rastrear equipe</span></div>
+        <div class="item c-teal"><div class="ico ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><span class="lbl">Vistoria</span><span class="desc">Inspeções e checklist</span></div>
+        <div class="item c-pink"><div class="ico ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><span class="lbl">Timeline</span><span class="desc">Tempo real</span></div>
+        <div class="item c-amber"><div class="ico ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><span class="lbl">Minha Conta</span><span class="desc">Perfil e config</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="pair-col g2-dark">
+    <span class="theme-badge badge-dark">🌙 Tema Escuro</span>
+    <div class="phone">
+      <div class="phone-head"><h2>Olá, João 👋</h2><div class="avatar">J</div></div>
+      <div class="greeting">O que você precisa hoje?</div>
+      <div class="g2">
+        <div class="item c-orange"><div class="ico ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><span class="lbl">Manutenção</span><span class="desc">Criar e gerenciar OS</span></div>
+        <div class="item c-blue"><div class="ico ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><span class="lbl">QR Code</span><span class="desc">Gerar códigos e links</span></div>
+        <div class="item c-green"><div class="ico ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><span class="lbl">Documentos</span><span class="desc">Recibos, contratos, OS</span></div>
+        <div class="item c-purple"><div class="ico ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><span class="lbl">Funcionários</span><span class="desc">Cadastro e gestão</span></div>
+        <div class="item c-red"><div class="ico ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><span class="lbl">Localização</span><span class="desc">Rastrear equipe</span></div>
+        <div class="item c-teal"><div class="ico ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><span class="lbl">Vistoria</span><span class="desc">Inspeções e checklist</span></div>
+        <div class="item c-pink"><div class="ico ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><span class="lbl">Timeline</span><span class="desc">Tempo real</span></div>
+        <div class="item c-amber"><div class="ico ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><span class="lbl">Minha Conta</span><span class="desc">Perfil e config</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== ESTILO 3: LISTA MODERNA ====== -->
+<div class="section-title">Estilo 3 — Lista Moderna</div>
+<div class="section-desc">Itens em lista horizontal com descrição, limpo e funcional</div>
+<div class="pair-row">
+  <div class="pair-col g3-light">
+    <span class="theme-badge badge-light">☀️ Tema Claro</span>
+    <div class="phone">
+      <div class="phone-head"><h2>Olá, João 👋</h2><div class="avatar">J</div></div>
+      <div class="greeting">O que você precisa hoje?</div>
+      <div class="g3">
+        <div class="item"><div class="ico c-orange ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><div class="txt"><div class="lbl">Manutenção</div><div class="desc">Criar e gerenciar ordens de serviço</div></div><div class="arr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+        <div class="item"><div class="ico c-blue ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div class="txt"><div class="lbl">QR Code</div><div class="desc">Gerar códigos e links</div></div><div class="arr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+        <div class="item"><div class="ico c-green ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div class="txt"><div class="lbl">Documentos</div><div class="desc">Recibos, contratos, orçamentos</div></div><div class="arr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+        <div class="item"><div class="ico c-purple ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="txt"><div class="lbl">Funcionários</div><div class="desc">Cadastrar e gerenciar equipe</div></div><div class="arr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+        <div class="item"><div class="ico c-red ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="txt"><div class="lbl">Localização</div><div class="desc">Rastrear equipe em tempo real</div></div><div class="arr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+        <div class="item"><div class="ico c-teal ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div class="txt"><div class="lbl">Vistoria</div><div class="desc">Inspeções e checklist</div></div><div class="arr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+        <div class="item"><div class="ico c-pink ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="txt"><div class="lbl">Timeline</div><div class="desc">Atividades em tempo real</div></div><div class="arr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+        <div class="item"><div class="ico c-amber ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="txt"><div class="lbl">Minha Conta</div><div class="desc">Perfil e configurações</div></div><div class="arr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="pair-col g3-dark">
+    <span class="theme-badge badge-dark">🌙 Tema Escuro</span>
+    <div class="phone">
+      <div class="phone-head"><h2>Olá, João 👋</h2><div class="avatar">J</div></div>
+      <div class="greeting">O que você precisa hoje?</div>
+      <div class="g3">
+        <div class="item"><div class="ico c-orange ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><div class="txt"><div class="lbl">Manutenção</div><div class="desc">Criar e gerenciar ordens de serviço</div></div><div class="arr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+        <div class="item"><div class="ico c-blue ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div class="txt"><div class="lbl">QR Code</div><div class="desc">Gerar códigos e links</div></div><div class="arr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+        <div class="item"><div class="ico c-green ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div class="txt"><div class="lbl">Documentos</div><div class="desc">Recibos, contratos, orçamentos</div></div><div class="arr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+        <div class="item"><div class="ico c-purple ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="txt"><div class="lbl">Funcionários</div><div class="desc">Cadastrar e gerenciar equipe</div></div><div class="arr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+        <div class="item"><div class="ico c-red ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="txt"><div class="lbl">Localização</div><div class="desc">Rastrear equipe em tempo real</div></div><div class="arr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+        <div class="item"><div class="ico c-teal ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div class="txt"><div class="lbl">Vistoria</div><div class="desc">Inspeções e checklist</div></div><div class="arr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+        <div class="item"><div class="ico c-pink ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="txt"><div class="lbl">Timeline</div><div class="desc">Atividades em tempo real</div></div><div class="arr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+        <div class="item"><div class="ico c-amber ic-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="txt"><div class="lbl">Minha Conta</div><div class="desc">Perfil e configurações</div></div><div class="arr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== ESTILO 4: BOLHAS CIRCULAR ====== -->
+<div class="section-title">Estilo 4 — Bolhas Circular</div>
+<div class="section-desc">Ícones circulares vibrantes com sombra, estilo app mobile nativo</div>
+<div class="pair-row">
+  <div class="pair-col g4-light">
+    <span class="theme-badge badge-light">☀️ Tema Claro</span>
+    <div class="phone">
+      <div class="phone-head"><h2>Olá, João 👋</h2><div class="avatar">J</div></div>
+      <div class="greeting">O que você precisa hoje?</div>
+      <div class="g4">
+        <div class="item"><div class="ico c-orange ic-lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><span class="lbl">Manutenção</span></div>
+        <div class="item"><div class="ico c-blue ic-lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><span class="lbl">QR Code</span></div>
+        <div class="item"><div class="ico c-green ic-lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><span class="lbl">Documentos</span></div>
+        <div class="item"><div class="ico c-purple ic-lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><span class="lbl">Funcionários</span></div>
+        <div class="item"><div class="ico c-red ic-lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><span class="lbl">Localização</span></div>
+        <div class="item"><div class="ico c-teal ic-lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><span class="lbl">Vistoria</span></div>
+        <div class="item"><div class="ico c-pink ic-lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><span class="lbl">Timeline</span></div>
+        <div class="item"><div class="ico c-amber ic-lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><span class="lbl">Minha Conta</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="pair-col g4-dark">
+    <span class="theme-badge badge-dark">🌙 Tema Escuro</span>
+    <div class="phone">
+      <div class="phone-head"><h2>Olá, João 👋</h2><div class="avatar">J</div></div>
+      <div class="greeting">O que você precisa hoje?</div>
+      <div class="g4">
+        <div class="item"><div class="ico c-orange ic-lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><span class="lbl">Manutenção</span></div>
+        <div class="item"><div class="ico c-blue ic-lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><span class="lbl">QR Code</span></div>
+        <div class="item"><div class="ico c-green ic-lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><span class="lbl">Documentos</span></div>
+        <div class="item"><div class="ico c-purple ic-lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><span class="lbl">Funcionários</span></div>
+        <div class="item"><div class="ico c-red ic-lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><span class="lbl">Localização</span></div>
+        <div class="item"><div class="ico c-teal ic-lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><span class="lbl">Vistoria</span></div>
+        <div class="item"><div class="ico c-pink ic-lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><span class="lbl">Timeline</span></div>
+        <div class="item"><div class="ico c-amber ic-lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><span class="lbl">Minha Conta</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

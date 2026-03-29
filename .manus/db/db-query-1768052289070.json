@@ -1,0 +1,9 @@
+{
+  "query": "CREATE TABLE IF NOT EXISTS `campos_rapidos_templates` (\n\t`id` int AUTO_INCREMENT NOT NULL,\n\t`condominioId` int NOT NULL,\n\t`userId` int,\n\t`tipoCampo` enum('titulo','descricao','local','observacao') NOT NULL,\n\t`tipoTarefa` enum('vistoria','manutencao','ocorrencia','antes_depois'),\n\t`valor` text NOT NULL,\n\t`nome` varchar(100),\n\t`vezesUsado` int DEFAULT 0,\n\t`ultimoUso` timestamp,\n\t`favorito` boolean DEFAULT false,\n\t`ativo` boolean DEFAULT true,\n\t`createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n\t`updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n\tCONSTRAINT `campos_rapidos_templates_id` PRIMARY KEY(`id`)\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BJigjDSHDXY3fo.aa7eee47dc1b --database eMtgZyuGJNKHLXS6iHiZyG --execute CREATE TABLE IF NOT EXISTS `campos_rapidos_templates` (\n\t`id` int AUTO_INCREMENT NOT NULL,\n\t`condominioId` int NOT NULL,\n\t`userId` int,\n\t`tipoCampo` enum('titulo','descricao','local','observacao') NOT NULL,\n\t`tipoTarefa` enum('vistoria','manutencao','ocorrencia','antes_depois'),\n\t`valor` text NOT NULL,\n\t`nome` varchar(100),\n\t`vezesUsado` int DEFAULT 0,\n\t`ultimoUso` timestamp,\n\t`favorito` boolean DEFAULT false,\n\t`ativo` boolean DEFAULT true,\n\t`createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n\t`updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n\tCONSTRAINT `campos_rapidos_templates_id` PRIMARY KEY(`id`)\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 246
+}

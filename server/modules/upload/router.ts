@@ -1,0 +1,114 @@
+import { protectedProcedure, router } from "../../_core/trpc";
+import { z } from "zod";
+import { nanoid } from "nanoid";
+import { storagePut } from "../../storage";
+
+export const uploadRouter = router({
+  image: protectedProcedure
+    .input(z.object({
+      fileName: z.string(),
+      fileType: z.string(),
+      fileData: z.string(), // base64
+      folder: z.string().optional(),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      const { fileName, fileType, fileData, folder = "uploads" } = input;
+      
+      console.log(`[Upload] Iniciando upload: ${fileName} (${fileType}), tamanho base64: ${(fileData.length / 1024).toFixed(0)}KB`);
+      
+      // Validate file type
+      const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+      if (!allowedTypes.includes(fileType)) {
+        throw new Error("Tipo de ficheiro não suportado. Use JPEG, PNG, GIF ou WebP.");
+      }
+      
+      // Decode base64 - suportar qualquer formato de data URI
+      const base64Data = fileData.replace(/^data:[^;]+;base64,/, "");
+      let buffer: Buffer = Buffer.from(base64Data, "base64");
+      let finalContentType = fileType;
+      
+      console.log(`[Upload] Buffer decodificado: ${(buffer.length / 1024).toFixed(0)}KB`);
+      
+      // Comprimir imagem (exceto GIFs que perdem animação)
+      if (fileType !== "image/gif") {
+        try {
+          const { compressImage } = await import("../../image-compression");
+          const compressedBuffer = await compressImage(buffer, fileType);
+          const savedPercent = ((1 - compressedBuffer.length / buffer.length) * 100).toFixed(0);
+          console.log(`[Upload] Comprimido: ${(buffer.length / 1024).toFixed(0)}KB → ${(compressedBuffer.length / 1024).toFixed(0)}KB (-${savedPercent}%)`);
+          buffer = Buffer.from(compressedBuffer);
+          finalContentType = "image/jpeg"; // compressImage converte para JPEG
+        } catch (error) {
+          console.error("[Upload] Erro ao comprimir imagem (usando original):", error);
+          // Continuar com imagem original se compressão falhar
+        }
+      }
+      
+      // Validate file size (max 10MB após compressão)
+      const maxSize = 10 * 1024 * 1024;
+      if (buffer.length > maxSize) {
+        throw new Error(`Imagem muito grande (${(buffer.length / 1024 / 1024).toFixed(1)}MB). Máximo permitido: 10MB após compressão.`);
+      }
+      
+      // Generate unique file key - usar extensão correta após compressão
+      const originalExt = fileName.split(".").pop() || "jpg";
+      const finalExt = finalContentType === "image/jpeg" ? "jpg" : originalExt;
+      const uniqueId = nanoid(10);
+      const fileKey = `${folder}/${ctx.user.id}/${uniqueId}.${finalExt}`;
+      
+      // Upload to storage
+      try {
+        const { url } = await storagePut(fileKey, buffer, finalContentType);
+        console.log(`[Upload] Sucesso: ${fileName} → ${url}`);
+        return { url, key: fileKey };
+      } catch (storageError: any) {
+        console.error(`[Upload] Erro no storage para ${fileName}:`, storageError);
+        throw new Error(`Erro ao salvar imagem: ${storageError.message || "Erro desconhecido"}`);
+      }
+    }),
+
+  // Upload de arquivos genéricos (PDF, DOC, etc.)
+  file: protectedProcedure
+    .input(z.object({
+      fileName: z.string(),
+      fileType: z.string(),
+      fileData: z.string(), // base64
+      folder: z.string().optional(),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      const { fileName, fileType, fileData, folder = "files" } = input;
+      
+      // Validar tipo de arquivo permitido
+      const allowedFileTypes = [
+        "application/pdf", "application/msword",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "application/vnd.ms-excel",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "text/csv", "text/plain",
+        "image/jpeg", "image/png", "image/gif", "image/webp",
+      ];
+      if (!allowedFileTypes.includes(fileType)) {
+        throw new Error(`Tipo de arquivo não permitido: ${fileType}`);
+      }
+      
+      // Decode base64
+      const base64Data = fileData.replace(/^data:[^;]+;base64,/, "");
+      let buffer = Buffer.from(base64Data, "base64");
+      
+      // Validate file size (max 10MB)
+      const maxSize = 10 * 1024 * 1024;
+      if (buffer.length > maxSize) {
+        throw new Error("Ficheiro muito grande. Máximo 10MB.");
+      }
+      
+      // Generate unique file key
+      const ext = fileName.split(".").pop() || "bin";
+      const uniqueId = nanoid(10);
+      const fileKey = `${folder}/${ctx.user.id}/${uniqueId}.${ext}`;
+      
+      // Upload to S3
+      const { url } = await storagePut(fileKey, buffer, fileType);
+      
+      return { url, key: fileKey };
+    }),
+});

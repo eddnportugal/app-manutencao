@@ -1,0 +1,1 @@
+ALTER TABLE `tarefas_simples` ADD `local` varchar(255);

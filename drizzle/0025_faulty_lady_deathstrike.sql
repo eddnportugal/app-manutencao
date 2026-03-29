@@ -1,0 +1,1 @@
+ALTER TABLE `preferencias_layout` MODIFY COLUMN `tema` enum('laranja','azul','verde','roxo','vermelho','marrom','cinza') NOT NULL DEFAULT 'laranja';

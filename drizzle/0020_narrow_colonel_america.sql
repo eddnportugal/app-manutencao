@@ -1,0 +1,1 @@
+ALTER TABLE `campos_rapidos_templates` MODIFY COLUMN `tipoCampo` enum('titulo','descricao','local','observacao','responsavel_os','titulo_os') NOT NULL;

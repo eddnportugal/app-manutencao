@@ -1,0 +1,23 @@
+{
+  "query": "SELECT * FROM app_codigos_acesso WHERE codigo LIKE 'APP-2026%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BJigjDSHDXY3fo.aa7eee47dc1b --database eMtgZyuGJNKHLXS6iHiZyG --execute SELECT * FROM app_codigos_acesso WHERE codigo LIKE 'APP-2026%';",
+  "rows": [
+    {
+      "id": "1",
+      "appId": "1",
+      "codigo": "APP-2026-CNVZ3O",
+      "descricao": "Acesso para técnicos de manutenção",
+      "ativo": "1",
+      "validoAte": "NULL",
+      "permissao": "visualizar",
+      "vezesUsado": "0",
+      "ultimoUso": "NULL",
+      "createdAt": "2026-01-13 23:41:47",
+      "updatedAt": "2026-01-13 23:41:47"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tappId\tcodigo\tdescricao\tativo\tvalidoAte\tpermissao\tvezesUsado\tultimoUso\tcreatedAt\tupdatedAt\n1\t1\tAPP-2026-CNVZ3O\tAcesso para técnicos de manutenção\t1\tNULL\tvisualizar\t0\tNULL\t2026-01-13 23:41:47\t2026-01-13 23:41:47\n",
+  "stderr": "",
+  "execution_time_ms": 117
+}

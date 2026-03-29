@@ -1,0 +1,9 @@
+{
+  "query": "CREATE TABLE IF NOT EXISTS `membro_acessos` (\n  `id` int AUTO_INCREMENT NOT NULL,\n  `membroId` int NOT NULL,\n  `condominioId` int NOT NULL,\n  `dataHora` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `ip` varchar(45),\n  `userAgent` text,\n  `dispositivo` varchar(100),\n  `navegador` varchar(100),\n  `sistemaOperacional` varchar(100),\n  `localizacao` varchar(255),\n  `tipoAcesso` enum('login', 'logout', 'recuperacao_senha', 'alteracao_senha') DEFAULT 'login',\n  `sucesso` boolean DEFAULT true,\n  `motivoFalha` text,\n  CONSTRAINT `membro_acessos_id` PRIMARY KEY(`id`),\n  CONSTRAINT `membro_acessos_membroId_fk` FOREIGN KEY (`membroId`) REFERENCES `membros_equipe`(`id`),\n  CONSTRAINT `membro_acessos_condominioId_fk` FOREIGN KEY (`condominioId`) REFERENCES `condominios`(`id`)\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BJigjDSHDXY3fo.aa7eee47dc1b --database eMtgZyuGJNKHLXS6iHiZyG --execute CREATE TABLE IF NOT EXISTS `membro_acessos` (\n  `id` int AUTO_INCREMENT NOT NULL,\n  `membroId` int NOT NULL,\n  `condominioId` int NOT NULL,\n  `dataHora` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `ip` varchar(45),\n  `userAgent` text,\n  `dispositivo` varchar(100),\n  `navegador` varchar(100),\n  `sistemaOperacional` varchar(100),\n  `localizacao` varchar(255),\n  `tipoAcesso` enum('login', 'logout', 'recuperacao_senha', 'alteracao_senha') DEFAULT 'login',\n  `sucesso` boolean DEFAULT true,\n  `motivoFalha` text,\n  CONSTRAINT `membro_acessos_id` PRIMARY KEY(`id`),\n  CONSTRAINT `membro_acessos_membroId_fk` FOREIGN KEY (`membroId`) REFERENCES `membros_equipe`(`id`),\n  CONSTRAINT `membro_acessos_condominioId_fk` FOREIGN KEY (`condominioId`) REFERENCES `condominios`(`id`)\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 312
+}

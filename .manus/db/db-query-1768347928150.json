@@ -1,0 +1,18 @@
+{
+  "query": "SELECT id, appId, codigo, ativo, permissao, descricao FROM app_codigos_acesso;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BJigjDSHDXY3fo.aa7eee47dc1b --database eMtgZyuGJNKHLXS6iHiZyG --execute SELECT id, appId, codigo, ativo, permissao, descricao FROM app_codigos_acesso;",
+  "rows": [
+    {
+      "id": "1",
+      "appId": "1",
+      "codigo": "APP-2026-CNVZ3O",
+      "ativo": "1",
+      "permissao": "visualizar",
+      "descricao": "Acesso para técnicos de manutenção"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tappId\tcodigo\tativo\tpermissao\tdescricao\n1\t1\tAPP-2026-CNVZ3O\t1\tvisualizar\tAcesso para técnicos de manutenção\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}

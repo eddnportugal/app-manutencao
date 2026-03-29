@@ -1,0 +1,4 @@
+ALTER TABLE `user_field_settings` MODIFY COLUMN `functionType` enum('vistoria','manutencao','ocorrencia','checklist','antes_depois','timeline','inventario','leitura_medidores','inspecao_seguranca','controle_pragas','limpeza','jardinagem','orcamentos','ordem_compra','contratos','vencimentos','ordem_servico') NOT NULL;--> statement-breakpoint
+ALTER TABLE `antes_depois` ADD `responsavel` varchar(255);--> statement-breakpoint
+ALTER TABLE `antes_depois` ADD `status_antesdepois` enum('pendente','em_andamento','concluido') DEFAULT 'pendente';--> statement-breakpoint
+ALTER TABLE `antes_depois` ADD `prioridade_antesdepois` enum('baixa','media','alta') DEFAULT 'media';

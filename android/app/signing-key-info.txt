@@ -1,0 +1,10 @@
+Keep this file and signing.keystore in a safe place. You'll need these files if you want to upload future versions of your PWA to the Google Play Store.
+
+Key store file: signing.keystore
+Key store password: VN6TaqbfFBFC
+Key alias: my-key-alias
+Key password: VN6TaqbfFBFC
+Signer's full name: App Manutenção Admin
+Signer's organization: App Manutenção
+Signer's organizational unit: Engineering
+Signer's country code: US

@@ -1,0 +1,210 @@
+{
+  "query": "SHOW COLUMNS FROM condominios;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BJigjDSHDXY3fo.aa7eee47dc1b --database eMtgZyuGJNKHLXS6iHiZyG --execute SHOW COLUMNS FROM condominios;",
+  "rows": [
+    {
+      "Field": "id",
+      "Type": "int(11)",
+      "Null": "NO",
+      "Key": "PRI",
+      "Default": "NULL",
+      "Extra": "auto_increment"
+    },
+    {
+      "Field": "codigo",
+      "Type": "varchar(50)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "cnpj",
+      "Type": "varchar(20)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "nome",
+      "Type": "varchar(255)",
+      "Null": "NO",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "endereco",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "cidade",
+      "Type": "varchar(100)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "estado",
+      "Type": "varchar(50)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "cep",
+      "Type": "varchar(10)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "logoUrl",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "bannerUrl",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "capaUrl",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "corPrimaria",
+      "Type": "varchar(20)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "#4F46E5",
+      "Extra": ""
+    },
+    {
+      "Field": "corSecundaria",
+      "Type": "varchar(20)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "#10B981",
+      "Extra": ""
+    },
+    {
+      "Field": "cadastroToken",
+      "Type": "varchar(32)",
+      "Null": "YES",
+      "Key": "UNI",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "assembleiaLink",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "assembleiaData",
+      "Type": "timestamp",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "sindicoId",
+      "Type": "int(11)",
+      "Null": "YES",
+      "Key": "MUL",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "cabecalhoLogoUrl",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "cabecalhoNomeCondominio",
+      "Type": "varchar(255)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "cabecalhoNomeSindico",
+      "Type": "varchar(255)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "rodapeTexto",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "rodapeContato",
+      "Type": "varchar(255)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "telefoneContato",
+      "Type": "varchar(20)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "createdAt",
+      "Type": "timestamp",
+      "Null": "NO",
+      "Key": "",
+      "Default": "CURRENT_TIMESTAMP",
+      "Extra": ""
+    },
+    {
+      "Field": "updatedAt",
+      "Type": "timestamp",
+      "Null": "NO",
+      "Key": "",
+      "Default": "CURRENT_TIMESTAMP",
+      "Extra": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP"
+    }
+  ],
+  "messages": [],
+  "stdout": "Field\tType\tNull\tKey\tDefault\tExtra\nid\tint(11)\tNO\tPRI\tNULL\tauto_increment\ncodigo\tvarchar(50)\tYES\t\tNULL\t\ncnpj\tvarchar(20)\tYES\t\tNULL\t\nnome\tvarchar(255)\tNO\t\tNULL\t\nendereco\ttext\tYES\t\tNULL\t\ncidade\tvarchar(100)\tYES\t\tNULL\t\nestado\tvarchar(50)\tYES\t\tNULL\t\ncep\tvarchar(10)\tYES\t\tNULL\t\nlogoUrl\ttext\tYES\t\tNULL\t\nbannerUrl\ttext\tYES\t\tNULL\t\ncapaUrl\ttext\tYES\t\tNULL\t\ncorPrimaria\tvarchar(20)\tYES\t\t#4F46E5\t\ncorSecundaria\tvarchar(20)\tYES\t\t#10B981\t\ncadastroToken\tvarchar(32)\tYES\tUNI\tNULL\t\nassembleiaLink\ttext\tYES\t\tNULL\t\nassembleiaData\ttimestamp\tYES\t\tNULL\t\nsindicoId\tint(11)\tYES\tMUL\tNULL\t\ncabecalhoLogoUrl\ttext\tYES\t\tNULL\t\ncabecalhoNomeCondominio\tvarchar(255)\tYES\t\tNULL\t\ncabecalhoNomeSindico\tvarchar(255)\tYES\t\tNULL\t\nrodapeTexto\ttext\tYES\t\tNULL\t\nrodapeContato\tvarchar(255)\tYES\t\tNULL\t\ntelefoneContato\tvarchar(20)\tYES\t\tNULL\t\ncreatedAt\ttimestamp\tNO\t\tCURRENT_TIMESTAMP\t\nupdatedAt\ttimestamp\tNO\t\tCURRENT_TIMESTAMP\tDEFAULT_GENERATED on update CURRENT_TIMESTAMP\n",
+  "stderr": "",
+  "execution_time_ms": 72
+}

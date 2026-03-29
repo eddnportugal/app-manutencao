@@ -1,0 +1,17 @@
+# Robots.txt para App Manutenção
+# https://appmanutencao.com.br
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://appmanutencao.com.br/sitemap.xml
+
+# Bloquear páginas de autenticação internas
+Disallow: /api/
+Disallow: /redefinir-senha
+
+# Permitir indexação de páginas públicas
+Allow: /login
+Allow: /registar
+Allow: /recuperar-senha

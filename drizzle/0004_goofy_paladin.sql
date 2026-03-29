@@ -1,0 +1,1 @@
+ALTER TABLE `valores_salvos` MODIFY COLUMN `tipo` enum('responsavel','categoria_vistoria','categoria_manutencao','categoria_checklist','categoria_ocorrencia','tipo_vistoria','tipo_manutencao','tipo_checklist','tipo_ocorrencia','fornecedor','localizacao','titulo_vistoria','subtitulo_vistoria','descricao_vistoria','observacoes_vistoria') NOT NULL;

@@ -1,0 +1,24 @@
+{
+  "query": "SELECT c.id, c.nome, c.sindicoId, u.name as sindico_nome, u.email as sindico_email FROM condominios c LEFT JOIN users u ON c.sindicoId = u.id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BJigjDSHDXY3fo.aa7eee47dc1b --database eMtgZyuGJNKHLXS6iHiZyG --execute SELECT c.id, c.nome, c.sindicoId, u.name as sindico_nome, u.email as sindico_email FROM condominios c LEFT JOIN users u ON c.sindicoId = u.id;",
+  "rows": [
+    {
+      "id": "1",
+      "nome": "Empresa Teste Manutenção",
+      "sindicoId": "1",
+      "sindico_nome": "EDUARDO DOMINIKUS",
+      "sindico_email": "eddnpt@gmail.com"
+    },
+    {
+      "id": "60004",
+      "nome": "bfab",
+      "sindicoId": "121201",
+      "sindico_nome": "Eduardo Dantas",
+      "sindico_email": "eduardodominikus@hotmail.com"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tnome\tsindicoId\tsindico_nome\tsindico_email\n1\tEmpresa Teste Manutenção\t1\tEDUARDO DOMINIKUS\teddnpt@gmail.com\n60004\tbfab\t121201\tEduardo Dantas\teduardodominikus@hotmail.com\n",
+  "stderr": "",
+  "execution_time_ms": 48
+}
